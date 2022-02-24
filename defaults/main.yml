@@ -7,6 +7,7 @@ chrony_keyfile: '/etc/chrony/chrony.keys'
 chrony_pool: # 2.debian.pool.ntp.org offline iburst
 # AWS Time Sync service default
 chrony_server: '169.254.169.123 prefer iburst'
+chrony_server_list: []
 chrony_driftfile: '/var/lib/chrony/chrony.drift'
 chrony_log: 'tracking measurements statistics'
 chrony_logdir: '/var/log/chrony'
@@ -15,3 +16,4 @@ chrony_dumpdir: '/var/lib/chrony'
 chrony_initstepslew: false
 chrony_initstepslew_threshold: 30
 chrony_initstepslew_servers: '169.254.169.123'
+chrony_azure_refclock: false

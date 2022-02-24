@@ -9,6 +9,10 @@ pool {{ chrony_pool }}
 server {{ chrony_server }}
 {% endif %}
 
+{% for server in chrony_server_list %}
+server {{ server }}
+{% endfor %}
+
 keyfile {{ chrony_keyfile }}
 commandkey 1
 
@@ -59,3 +63,6 @@ hwclockfile /etc/adjtime
 
 rtcsync
 
+{% if chrony_azure_refclock %}
+refclock PHC /dev/ptp_hyperv poll 3 dpoll -2 offset 0
+{% endif %}
