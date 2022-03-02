@@ -10,7 +10,7 @@ server {{ chrony_server }}
 {% endif %}
 
 {% for server in chrony_server_list %}
-server {{ server }}
+server {{ server }} iburst minpoll 4 maxpoll 4
 {% endfor %}
 
 keyfile {{ chrony_keyfile }}
