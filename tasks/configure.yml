@@ -1,7 +1,14 @@
 ---
+- name: 'Get file stats for /dev/ptp_hyperv'
+  stat:
+    path: '/dev/ptp_hyperv'
+  register: ptp_hyperv_stat
+
 - name: 'Configure Chrony'
   become: yes
   template:
     src: 'chrony.conf.j2'
     dest: "{{ chrony_conf_file }}"
+  vars:
+    ptp_hyperv_exists: "{{ ptp_hyperv_stat.stat.exists | default(false) }}"
   notify: 'restart chrony'
