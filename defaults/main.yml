@@ -17,6 +17,3 @@ chrony_initstepslew: false
 chrony_initstepslew_threshold: 30
 chrony_initstepslew_servers: '169.254.169.123'
 chrony_azure_refclock: false
-ptp_hyperv_stat:
-  stat:
-    exists: false

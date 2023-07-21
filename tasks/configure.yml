@@ -1,15 +1,7 @@
 ---
-- name: 'Get file stats for /dev/ptp_hyperv'
-  stat:
-    path: '/dev/ptp_hyperv'
-  register: ptp_hyperv_stat
-  when: chrony_azure_refclock
-
 - name: 'Configure Chrony'
   become: yes
   template:
     src: 'chrony.conf.j2'
     dest: "{{ chrony_conf_file }}"
-  vars:
-    ptp_hyperv_exists: "{{ ptp_hyperv_stat.stat.exists }}"
   notify: 'restart chrony'

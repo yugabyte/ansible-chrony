@@ -64,9 +64,5 @@ hwclockfile /etc/adjtime
 rtcsync
 
 {% if chrony_azure_refclock %}
-{% if ptp_hyperv_exists %}
-refclock PHC /dev/ptp_hyperv poll 3 dpoll -2 offset 0
-{% else %}
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
-{% endif %}
 {% endif %}
