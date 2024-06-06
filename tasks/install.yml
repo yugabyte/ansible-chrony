@@ -4,6 +4,7 @@
   package:
     name: 'chrony'
     state: 'present'
+    lock_timeout: 600
   tags:
     - 'chrony-install'
     - 'chrony'
