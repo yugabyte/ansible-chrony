@@ -6,5 +6,6 @@
     - 'chrony-vars'
 
 - include: "install.yml"
+  when: not (air_gap | default(false))
 - include: "configure.yml"
 - include: "service.yml"
