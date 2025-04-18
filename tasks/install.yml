@@ -1,9 +1,19 @@
 ---
-- name: 'Install Chrony'
+- name: "Install Chrony using package module"
   become: yes
   package:
-    name: 'chrony'
-    state: 'present'
+    name: chrony
+    state: present
   tags:
-    - 'chrony-install'
-    - 'chrony'
+    - chrony-install
+    - chrony
+  ignore_errors: yes
+
+- name: "Fallback: Install Chrony using raw command on Amazon Linux 2023"
+  become: yes
+  raw: |
+    dnf install -y chrony
+  when: ansible_os_family == 'RedHat' and ansible_distribution == 'Amazon'
+  tags:
+    - chrony-install
+    - chrony
