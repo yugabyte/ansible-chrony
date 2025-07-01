@@ -12,8 +12,10 @@
 - name: "Fallback: Install Chrony using raw command on Amazon Linux 2023"
   become: yes
   raw: |
-    dnf install -y chrony
-  when: ansible_os_family == 'RedHat' and ansible_distribution == 'Amazon'
+    yum install -y chrony
+  when: ansible_os_family == 'RedHat' and
+        ansible_distribution == 'Amazon' and
+        ansible_distribution_major_version != '2'
   tags:
     - chrony-install
     - chrony
